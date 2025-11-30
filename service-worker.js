@@ -2,24 +2,22 @@
 
 const CACHE_NAME = 'ety-market-cache-v1';
 
-// Liste des fichiers critiques à mettre en cache
+// ATTENTION : Le chemin racine '/' a été retiré car il cause des 404 sur GitHub Pages.
 const urlsToCache = [
-    '/', 
-    'index.html',
+    'index.html', // C'est la page d'accueil
     'styles.css',
     'data.js',
     'utils.js',
     'script.js',
     'script-details.js',
     'script-catalogue.js',
-    'animations-and-search.js', // Assurez-vous d'inclure votre script de recherche
+    'animations-and-search.js', 
     'telephones.html',
     'jeux.html',
     'films.html',
     'series.html',
     'produit-details.html',
     'panier.html',
-    // Ajoutez vos icônes et images principales ici
     'images/luffy-run.gif', 
     'images/icons/icon-192x192.png', 
     'manifest.json'
