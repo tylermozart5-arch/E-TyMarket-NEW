@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier - E-TyMarket</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="#00CED1"> 
+    <style>
+        main { opacity: 0; animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="luffy-container">
+        <img id="luffy-animation" src="" alt="Luffy en 3D" style="display: none;">
+    </div>
+
+    <div class="animated-background">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+
+    <header>
+        <h1 onclick="window.location.href='index.html'">E-TyMarket</h1>
+        <nav>
+            <a href="panier.html">🛒 Panier (<span id="panier-count">0</span>)</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Votre Panier d'Achats</h2>
+        
+        <section id="panier-items" class="panier-items-list">
+            <p>Votre panier est vide.</p>
+        </section>
+
+        <div id="panier-recap" class="panier-recap">
+            </div>
+
+        <div class="panier-actions">
+            <button onclick="viderPanier()">Vider le Panier</button>
+            <button onclick="alert('Fonctionnalité de paiement bientôt disponible ! Pour l\'instant, veuillez utiliser le bouton Achat sur la page produit.')">Procéder au Paiement</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 E-TyMarket. Tous droits réservés.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="animations-and-search.js"></script> 
+    <script>
+        // Script temporaire pour afficher le panier, si vous n'avez pas de script-panier.js dédié
+        document.addEventListener('DOMContentLoaded', () => {
+            updatePanierCount();
+            
+            // Logique simple d'affichage du panier
+            const panier = JSON.parse(localStorage.getItem('panier') || '[]');
+            const container = document.getElementById('panier-items');
+            const recap = document.getElementById('panier-recap');
+            
+            if (panier.length === 0) {
+                container.innerHTML = '<p class="empty-panier-message">Votre panier est vide.</p>';
+                recap.innerHTML = '';
+                return;
+            }
+
+            let total = 0;
+            let htmlItems = panier.map(item => {
+                const prixTotalItem = item.prix * item.quantite;
+                total += prixTotalItem;
+                return `
+                    <div class="panier-item">
+                        <img src="${item.imageURL}" alt="${item.nom}">
+                        <div class="item-details">
+                            <h3>${item.nom}</h3>
+                            <p>Quantité: ${item.quantite}</p>
+                            <p>Prix unitaire: ${formatPrix(item.prix)}</p>
+                            <p class="total-item-price">Total: ${formatPrix(prixTotalItem)}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = htmlItems;
+            recap.innerHTML = `<h3>Total Panier: ${formatPrix(total)}</h3>`;
+        });
+    </script>
+</body>
+</html>

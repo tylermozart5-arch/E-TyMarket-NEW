@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-TyMarket - Accueil</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="#00CED1"> 
+    <style>
+        /* Animation de fondu pour l'arrivée sur la page */
+        main { opacity: 0; animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="luffy-container">
+        <img id="luffy-animation" src="" alt="Luffy en 3D" style="display: none;">
+    </div>
+
+    <div class="animated-background">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+
+    <header>
+        <h1 onclick="window.location.href='index.html'">E-TyMarket</h1>
+        <nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Rechercher un produit..." onkeyup="handleSearch()">
+            </div>
+            <a href="panier.html">🛒 Panier (<span id="panier-count">0</span>)</a>
+        </nav>
+    </header>
+
+    <div class="category-nav">
+        <ul class="category-nav-links">
+            <li><a href="telephones.html">Téléphones</a></li>
+            <li><a href="films.html">Films</a></li>
+            <li><a href="series.html">Séries</a></li>
+            <li><a href="jeux.html">Jeux Vidéos</a></li>
+        </ul>
+    </div>
+
+    <main>
+        
+        <section class="catalogue-section">
+            <h2>Nouveautés Téléphones 📱</h2>
+            <div id="produits-telephones" class="catalogue-grid">
+                </div>
+            <a href="telephones.html" class="voir-tout">Voir tout le catalogue Téléphones &raquo;</a>
+        </section>
+
+        <section class="catalogue-section">
+            <h2>Films Récents 🎬</h2>
+            <div id="produits-films" class="catalogue-grid">
+                </div>
+            <a href="films.html" class="voir-tout">Voir tout le catalogue Films &raquo;</a>
+        </section>
+
+        <section class="catalogue-section">
+            <h2>Séries Populaires 📺</h2>
+            <div id="produits-series" class="catalogue-grid">
+                </div>
+            <a href="series.html" class="voir-tout">Voir tout le catalogue Séries &raquo;</a>
+        </section>
+
+        <section class="catalogue-section">
+            <h2>Jeux Vidéos à la Une 🎮</h2>
+            <div id="produits-jeux" class="catalogue-grid">
+                </div>
+            <a href="jeux.html" class="voir-tout">Voir tout le catalogue Jeux Vidéos &raquo;</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 E-TyMarket. Tous droits réservés.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="animations-and-search.js"></script> 
+    <script src="script.js"></script>
+</body>
+</html>
